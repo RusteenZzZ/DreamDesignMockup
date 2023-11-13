@@ -10,7 +10,6 @@ interface ButtonProps {
   hoverBackgroundColor: Colors,
   labelColor: Colors,
   hoverLabelColor: Colors,
-
 }
 
 const Button: FC<ButtonProps> = (props) => {
