@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { publicRoutes } from "../../routes/routes";
 import { Navigate, Route, Routes } from "react-router";
 
