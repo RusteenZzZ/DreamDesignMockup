@@ -9,7 +9,7 @@ const Navbar: FC = () => {
   return (
     <div className={styles.navbar}>
       <div className={styles.toolbar}>
-        <div>
+        <div className={styles.title}>
           {Labels.TITLE}
         </div>
         <div className={styles.buttonGroup}>
@@ -18,7 +18,9 @@ const Navbar: FC = () => {
               label={Labels.SIGN_IN}
               onClick={() => {}}
               backgroundColor={Colors.WHITE}
+              hoverBackgroundColor={Colors.GREY}
               labelColor={Colors.BLACK}
+              hoverLabelColor={Colors.BLACK}
             />
           </div>
           <div className={styles.button}>
@@ -26,7 +28,9 @@ const Navbar: FC = () => {
               label={Labels.SIGN_UP}
               onClick={() => {}}
               backgroundColor={Colors.ACID}
+              hoverBackgroundColor={Colors.BROWN}
               labelColor={Colors.WHITE}
+              hoverLabelColor={Colors.WHITE}
             />
           </div>
         </div>
