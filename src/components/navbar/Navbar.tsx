@@ -8,35 +8,40 @@ import styles from "./Navbar.module.css";
 const Navbar: FC = () => {
   return (
     <div className={styles.navbar}>
-      <div className={styles.toolbar}>
-        <div className={styles.title}>
-          {Labels.TITLE}
-        </div>
-        <div className={styles.buttonGroup}>
-          <div className={styles.button}>
-            <Button
-              label={Labels.SIGN_IN}
-              onClick={() => {}}
-              backgroundColor={Colors.WHITE}
-              hoverBackgroundColor={Colors.GREY}
-              labelColor={Colors.BLACK}
-              hoverLabelColor={Colors.BLACK}
-            />
-          </div>
-          <div className={styles.button}>
-            <Button
-              label={Labels.SIGN_UP}
-              onClick={() => {}}
-              backgroundColor={Colors.ACID}
-              hoverBackgroundColor={Colors.BROWN}
-              labelColor={Colors.WHITE}
-              hoverLabelColor={Colors.WHITE}
-            />
-          </div>
-        </div>
+      <div className={styles.logo}>
+        <img width={100} height={100} src="./assets/img/DreamDesignLogo.png" />
       </div>
-      <div className={styles.horizontalLine}>
-
+      <div className={styles.navbarMain}>
+        <div className={styles.navbarContent}>
+          <div className={styles.title}>
+            {Labels.TITLE}
+          </div>
+          <div className={styles.buttonGroup}>
+            <div className={styles.button}>
+              <Button
+                label={Labels.SIGN_IN}
+                onClick={() => { }}
+                isTransparent={true}
+                color={Colors.ACID}
+                hoverColor={Colors.BROWN}
+                labelColor={Colors.ACID}
+                hoverLabelColor={Colors.BROWN}
+              />
+            </div>
+            <div className={styles.button}>
+              <Button
+                label={Labels.SIGN_UP}
+                onClick={() => { }}
+                isTransparent={false}
+                color={Colors.ACID}
+                hoverColor={Colors.BROWN}
+                labelColor={Colors.WHITE}
+                hoverLabelColor={Colors.WHITE}
+              />
+            </div>
+          </div>
+        </div>
+        <div className={styles.horizontalLine} />
       </div>
     </div>
   )

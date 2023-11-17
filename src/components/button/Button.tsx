@@ -6,8 +6,9 @@ import styles from "./Button.module.css";
 interface ButtonProps {
   label: string,
   onClick: (arg: any) => void,
-  backgroundColor: Colors,
-  hoverBackgroundColor: Colors,
+  isTransparent: boolean,
+  color: Colors,
+  hoverColor: Colors,
   labelColor: Colors,
   hoverLabelColor: Colors,
 }
@@ -24,12 +25,17 @@ const Button: FC<ButtonProps> = (props) => {
   }
 
   const buttonStyle = {
-    backgroundColor: isHovered
-      ? props.hoverBackgroundColor
-      : props.backgroundColor,
+    backgroundColor: props.isTransparent
+      ? Colors.WHITE
+      : isHovered
+        ? props.hoverColor
+        : props.color,
+    borderColor: isHovered
+      ? props.hoverColor
+      : props.color,
     color: isHovered
-      ? props.labelColor
-      : props.hoverLabelColor,
+      ? props.hoverLabelColor
+      : props.labelColor,
   }
 
   return (
