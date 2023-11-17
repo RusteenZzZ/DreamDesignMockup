@@ -14,7 +14,12 @@ const Navbar: FC = () => {
       <div className={styles.navbarMain}>
         <div className={styles.navbarContent}>
           <div className={styles.title}>
-            {Labels.TITLE}
+            <div className={styles.title1}>
+              {Labels.TITLE1}
+            </div>
+            <div className={styles.title2}>
+              {Labels.TITLE2}
+            </div>
           </div>
           <div className={styles.buttonGroup}>
             <div className={styles.button}>

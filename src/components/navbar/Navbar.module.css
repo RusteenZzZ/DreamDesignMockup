@@ -27,8 +27,19 @@
 }
 
 .title {
+  display: flex;
+  flex-direction: row;
+}
+
+.title1 {
   font-weight: bold;
   font-size: xx-large;
+}
+
+.title2 {
+  font-weight: bold;
+  font-size: xx-large;
+  color: #606C38;
 }
 
 .buttonGroup {
