@@ -1,9 +1,9 @@
 .navbar {
-  border-bottom: 44px solid #A96021;
+  width: auto;
   display: flex;
-  flex-direction: row;
   padding-left: 5%;
-  width: 100%;
+  border-bottom: 44px solid #A96021;
+  flex-direction: row;
 }
 
 .navbarMain {
@@ -14,17 +14,16 @@
 }
 
 .horizontalLine {
-  width: auto;
   height: 5px;
   background-color: #606C38;
 }
 
 .navbarContent {
-  margin-right: 5%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
+  padding-right: 5%;
 }
 
 .title {
