@@ -15,6 +15,14 @@ interface ButtonProps {
   hoverLabelColor: Colors,
 }
 
+const paddings: {
+  [key: string]: string
+} = {
+  "small": "5px 10px 5px 10px",
+  "medium": "8px 16px 8px 16px",
+  "large": "10px 20px 10px 20px",
+}
+
 const Button: FC<ButtonProps> = (props) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
@@ -26,24 +34,7 @@ const Button: FC<ButtonProps> = (props) => {
     setIsHovered(false);
   }
 
-  let fontSize;
-  let padding;
-  switch (props.size) {
-    case Size.small:
-      fontSize = "small";
-      padding = "5px 10px 5px 10px"
-      break;
-    case Size.medium:
-      fontSize = "medium";
-      padding = "8px 16px 8px 16px"
-      break;
-    case Size.large:
-      fontSize = "large";
-      padding = "10px 20px 10px 20px";
-      break;
-  }
-
-  const buttonStyle = {
+  let buttonStyle = {
     backgroundColor: props.isTransparent
       ? Colors.WHITE
       : isHovered
@@ -55,8 +46,8 @@ const Button: FC<ButtonProps> = (props) => {
     color: isHovered
       ? props.hoverLabelColor
       : props.labelColor,
-    fontSize,
-    padding,
+    fontSize: props.size.toString(),
+    padding: paddings[props.size.toString()],
   }
 
   return (
