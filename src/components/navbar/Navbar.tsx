@@ -3,8 +3,8 @@ import { FC } from "react";
 import Button from "../button/Button";
 import { Labels } from "../../const/labels";
 import { Colors } from "../../const/colors";
+import { Size } from "../../const/size";
 import styles from "./Navbar.module.css";
-import InputText from "../input-text/InputText";
 
 const Navbar: FC = () => {
   return (
@@ -25,6 +25,7 @@ const Navbar: FC = () => {
           <div className={styles.buttonGroup}>
             <div className={styles.button}>
               <Button
+                size={Size.large}
                 label={Labels.SIGN_IN}
                 onClick={() => { }}
                 isTransparent={true}
@@ -36,6 +37,7 @@ const Navbar: FC = () => {
             </div>
             <div className={styles.button}>
               <Button
+                size={Size.large}
                 label={Labels.SIGN_UP}
                 onClick={() => { }}
                 isTransparent={false}
