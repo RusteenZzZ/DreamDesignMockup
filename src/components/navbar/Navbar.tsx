@@ -4,6 +4,7 @@ import Button from "../button/Button";
 import { Labels } from "../../const/labels";
 import { Colors } from "../../const/colors";
 import styles from "./Navbar.module.css";
+import InputText from "../input-text/InputText";
 
 const Navbar: FC = () => {
   return (
@@ -12,7 +13,7 @@ const Navbar: FC = () => {
         <img width={100} height={100} src="./assets/img/DreamDesignLogo.png" />
       </div>
       <div className={styles.navbarMain}>
-        <div className={styles.navbarContent}>
+        <div className={styles.navbarContent1}>
           <div className={styles.title}>
             <div className={styles.title1}>
               {Labels.TITLE1}
@@ -47,6 +48,8 @@ const Navbar: FC = () => {
           </div>
         </div>
         <div className={styles.horizontalLine} />
+        <div className={styles.navbarContent2}>
+        </div>
       </div>
     </div>
   )
