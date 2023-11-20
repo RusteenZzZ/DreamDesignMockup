@@ -39,8 +39,8 @@ One item is an object containing this fields :
 	measures: String,
 	imageUrl: String,
 	productUrl: String,
-	variantsList: list,
-	price: float,
+	variantsList: Array,
+	price: Float,
 	type: String,
 }
 ```
@@ -53,7 +53,7 @@ For example :
 	measures: '11 3/4x74 3/4 "',
 	imageUrl: 'https://www.ikea.com/us/en/images/products/lack-wall-shelf-unit-white__0246565_pe385541_s5.jpg',
 	productUrl: 'https://www.ikea.com/us/en/p/lack-wall-shelf-unit-white-60282186/',
-	variantsList: {'numberOfVariants': 2, 'variants': [{variant1},{variant2}] },
+	variantsList: {'numberOfVariants': 2, 'variants': [{variant1}, {variant2}] },
 	price: 99.99,
 	type: 'Shelf units & cube storage',
 }
