@@ -42,6 +42,8 @@ One item is an object containing this fields :
 	variantsList: Array,
 	price: Float,
 	type: String,
+	colorName: String,
+	colorHex: String,
 }
 ```
 
@@ -56,5 +58,7 @@ For example :
 	variantsList: {'numberOfVariants': 2, 'variants': [{variant1}, {variant2}] },
 	price: 99.99,
 	type: 'Shelf units & cube storage',
+	colorName: 'white',
+	colorHex: 'ffffff',
 }
 ```
