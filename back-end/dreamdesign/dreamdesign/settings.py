@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework', # Django REST Framework
-    'rest_framework.views', # Django REST Framework
     'corsheaders', # CORS
     'rest_framework.authtoken',
     'products_catalog.apps.ProductsCatalogConfig', 

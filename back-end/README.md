@@ -30,3 +30,31 @@ Here are the three API endpoints implemented (only GET requests available) :
 - `GET /items/{type}/random/` : return one random item among the given type
 
 {type} parameter may be string, one of the list from  `GET /items/types/`
+
+One item is an object containing this fields :
+```js
+{
+	id: String, 
+	name: String,
+	measures: String,
+	imageUrl: String,
+	productUrl: String,
+	variantsList: list,
+	price: float,
+	type: String,
+}
+```
+
+For example : 
+```js
+{
+	id: '60282186', 
+	name: 'LACK',
+	measures: '11 3/4x74 3/4 "',
+	imageUrl: 'https://www.ikea.com/us/en/images/products/lack-wall-shelf-unit-white__0246565_pe385541_s5.jpg',
+	productUrl: 'https://www.ikea.com/us/en/p/lack-wall-shelf-unit-white-60282186/',
+	variantsList: {'numberOfVariants': 2, 'variants': [{variant1},{variant2}] },
+	price: 99.99,
+	type: 'Shelf units & cube storage',
+}
+```
