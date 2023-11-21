@@ -27,14 +27,24 @@ To add a new application : `django-admin startapp app_name`
 Here are the three API endpoints implemented (only GET requests available) :
 - `GET /items/types/` : retrieve the list of all possible types of items (bed, window, etc.)
 - `GET /items/random/` : return a list of random items of the provided types, respecting the provided maximal total price. The body must contain :
+
 ```js
 {
-	typesList: List<type>,
 	maxTotalPrice: Float,
+	typesList: List<String>,
 }
 ```
 
-{type} parameter may be string, one of the list from  `GET /items/types/`
+Elements of typesList parameter must be strings, among the list provided by `GET /items/types/`.
+For example :
+```js
+{
+	maxTotalPrice: 2500,
+	typesList: ['Shelf units & cube storage','Beds','Dining tables'],
+}
+```
+
+### Item object
 
 One Item is an object containing this fields :
 ```js
@@ -60,7 +70,7 @@ For example :
 	measures: '11 3/4x74 3/4 "',
 	imageUrl: 'https://www.ikea.com/us/en/images/products/lack-wall-shelf-unit-white__0246565_pe385541_s5.jpg',
 	productUrl: 'https://www.ikea.com/us/en/p/lack-wall-shelf-unit-white-60282186/',
-	variantsList: {'numberOfVariants': 2, 'variants': [{variant1}, {variant2}] },
+	variantsList: [{variant1}, {variant2}, {variant3}],
 	price: 99.99,
 	type: 'Shelf units & cube storage',
 	colorName: 'white',
