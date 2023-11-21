@@ -26,12 +26,17 @@ To add a new application : `django-admin startapp app_name`
 
 Here are the three API endpoints implemented (only GET requests available) :
 - `GET /items/types/` : retrieve the list of all possible types of items (bed, window, etc.)
-- `GET /items/{type}/` : retrieve the list of items of the exact type
-- `GET /items/{type}/random/` : return one random item among the given type
+- `GET /items/random/` : return a list of random items of the provided types, respecting the provided maximal total price. The body must contain :
+```js
+{
+	typesList: List<type>,
+	maxTotalPrice: Float,
+}
+```
 
 {type} parameter may be string, one of the list from  `GET /items/types/`
 
-One item is an object containing this fields :
+One Item is an object containing this fields :
 ```js
 {
 	id: String, 
@@ -39,7 +44,7 @@ One item is an object containing this fields :
 	measures: String,
 	imageUrl: String,
 	productUrl: String,
-	variantsList: Array,
+	variantsList: List<Item>,
 	price: Float,
 	type: String,
 	colorName: String,
