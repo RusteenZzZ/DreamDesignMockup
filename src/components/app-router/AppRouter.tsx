@@ -7,8 +7,8 @@ const AppRouter: FC = () => {
   return (
     <Routes>
       {
-        publicRoutes.map(route =>
-          <Route path={route.path} element={route.element}/>
+        publicRoutes.map((route, id) =>
+          <Route key={id} path={route.path} element={route.element}/>
         )
       }
       <Route path="*" element={<Navigate to="/"/>}/>
