@@ -16,8 +16,44 @@
   border-radius: 10px;
 }
 
+.label {
+  margin: 0 10px 0 40px;
+}
+
 .modalInput {
-  margin: 5px 0 5px 0;
+  margin: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.optionsColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  margin: 10px;
+}
+
+.horizontalInputs {
+  display: flex;
+  flex-direction: row;
+}
+
+.verticalInputs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.verticalInput {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
 }
 
 .buttonGroup {
@@ -26,5 +62,9 @@
 }
 
 .button {
+  margin: 0 10px 0 10px;
+}
+
+.roundedInput {
   margin: 0 10px 0 10px;
 }
