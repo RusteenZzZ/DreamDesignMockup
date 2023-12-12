@@ -1,0 +1,15 @@
+.itemCardAdder {
+  background-color: #E4E4E4;
+  height: 400px;
+  width: 200px;
+  border: dashed black 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.itemCardAdder:hover {
+  background-color: #cdcdcd;
+}
