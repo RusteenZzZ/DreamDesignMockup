@@ -7,11 +7,18 @@ import AddItemModal from "../add-item-modal/AddItemModal";
 import ItemCard from "../item-card/ItemCard";
 
 const Cards: FC = () => {
+  const MAX_NUM_OF_ITEM_CARDS = 5;
+
   const [itemCards, setItemCards] = useState<Array<string>>([]);
   const [open, setOpen] = useState<boolean>(false);
 
+  const handleOpenModal = () => {
+    if (itemCards.length < MAX_NUM_OF_ITEM_CARDS)
+      setOpen(true);
+  }
+
   const addItemCard = () => {
-    if (itemCards.length < 5)
+    if (itemCards.length < MAX_NUM_OF_ITEM_CARDS)
       setItemCards([...itemCards, "LOREM IPSUM ITEM"]);
   }
 
@@ -23,14 +30,19 @@ const Cards: FC = () => {
 
   return (
     <div className={styles.cards}>
-      <ItemCardAdder openModal={() => {
-        if (itemCards.length < 5)
-          setOpen(true)
-      }} />
+      {
+        itemCards.length < MAX_NUM_OF_ITEM_CARDS
+          ?
+          <ItemCardAdder openModal={handleOpenModal}/>
+          :
+          <></>
+      }
       {
         itemCards.length === 0
-          ? <ItemCardWelcome />
-          : (
+          ?
+          <ItemCardWelcome />
+          :
+          (
             itemCards.map((itemCard, id) =>
               <ItemCard
                 key={id}
