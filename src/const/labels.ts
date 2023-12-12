@@ -5,4 +5,6 @@ export enum Labels {
   SIGN_IN = "Sign In",
   SIGN_UP = "Sign Up",
   UPLOAD_DESIGN = "Upload the design",
+  APPLY = "Apply",
+  CANCEL = "Cancel",
 }

@@ -5,4 +5,5 @@ export enum Colors {
   ACID = "#A7B24B",
   DARK_ACID = "#606C38",
   BLACK = "#000",
+  LIGHT_GREEN = "#A7B24B",
 }

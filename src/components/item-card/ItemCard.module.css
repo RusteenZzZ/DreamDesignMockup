@@ -1,0 +1,40 @@
+.itemCard {
+  position: relative;
+  background-color: white;
+  width: 200px;
+  height: 400px;
+  margin-right: 20px;
+}
+
+.buttons {
+  width: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: absolute;
+  right: 8px;
+  top: 8px
+}
+
+.button {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.deleteButton {
+  background-color: red;
+}
+
+.lockButton {
+  background-color: #606C38;
+}
+
+.randomizeButton {
+  background-color: #DDA15E;
+}
