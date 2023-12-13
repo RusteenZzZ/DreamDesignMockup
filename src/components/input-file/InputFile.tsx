@@ -6,9 +6,12 @@ import { Colors } from "../../const/colors";
 import Button from "../button/Button";
 import styles from "./InputFile.module.css"
 
-const InputFile: FC = () => {
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+interface InputFileProps {
+  selectedImage: File | null,
+  setSelectedImage: (arg: any) => any,
+}
 
+const InputFile: FC<InputFileProps> = ({ selectedImage, setSelectedImage }) => {
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];
     if (file)
@@ -20,20 +23,6 @@ const InputFile: FC = () => {
     if (selectedImage) {
       const formData = new FormData();
       formData.append('image', selectedImage);
-
-      // You can now send the formData to the server using fetch or an API library
-      // For example:
-      // fetch('/api/upload', {
-      //   method: 'POST',
-      //   body: formData,
-      // })
-      // .then(response => response.json())
-      // .then(data => console.log(data))
-      // .catch(error => console.error('Error uploading image:', error));
-
-      console.log('Selected Image:', selectedImage);
-    } else {
-      console.log('No image selected');
     }
   };
 

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 
 import CrossIcon from "../../assets/img/CrossIcon.png";
 import Button from "../button/Button";
@@ -108,6 +108,7 @@ const AddItemModal: FC<AddItemModalProps> = ({
   closeModal,
   addItemCard,
 }) => {
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
 
   const clickOnBackgroundHandler = () => {
     closeModal();
@@ -121,7 +122,7 @@ const AddItemModal: FC<AddItemModalProps> = ({
     <div className={styles.background} onClick={clickOnBackgroundHandler}>
       <div className={styles.addItemModal} onClick={clickOnModalHandler}>
         <div className={styles.modalInput}>
-          <InputFile/>
+          <InputFile selectedImage={selectedImage} setSelectedImage={setSelectedImage}/>
         </div>
         <hr />
         <div className={styles.modalInput}>
