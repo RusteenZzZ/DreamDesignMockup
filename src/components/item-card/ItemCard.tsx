@@ -14,12 +14,25 @@ const ItemCard: FC<ItemCardsProps> = ({
   label,
   deleteItemCard
 }) => {
-  const [imagePath, setImagePath] = useState<string>("");
+  const [num, setNum] = useState<number>(0);
+  const [image, setImage] = useState<string | null>(null);
 
   const chooseRandomImage = () => {
     const randomValue = Math.floor(Math.random() * 1685) + 1;
-    setImagePath("./../ai/" + randomValue + ".png");
+    setNum(randomValue);
   }
+
+  const loadImage = async () => {
+    try {
+      const dynamicImport = await import("./../../ai/img/" + num + ".jpg");
+      setImage(dynamicImport.default);
+    } catch (error) {
+      console.error('Error loading image:', error);
+    }
+  };
+
+  if (num !== 0)
+    loadImage();
 
   return (
     <div className={styles.itemCard}>
@@ -30,13 +43,13 @@ const ItemCard: FC<ItemCardsProps> = ({
         <div className={`${styles.button} ${styles.lockButton}`}>
           <img width={18} src={LockIcon} />
         </div>
-        <div className={`${styles.button} ${styles.randomizeButton}`}>
+        <div className={`${styles.button} ${styles.randomizeButton}`} onClick={chooseRandomImage}>
           <img width={18} src={RandomizeIcon} />
         </div>
       </div>
       {
-        imagePath !== ""
-          ? <img src={imagePath} />
+        image
+          ? <img width={200} src={image} />
           : <></>
       }
     </div>
