@@ -1,0 +1,11 @@
+.inputFile {
+  display: none;
+  border: none;
+  border-radius: 10px;
+  height: 20px;
+  background-color: #A96021;
+}
+
+.label {
+  cursor: pointer;
+}

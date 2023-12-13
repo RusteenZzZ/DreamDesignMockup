@@ -9,6 +9,7 @@ import InputRadio from "../input-radio/InputRadio";
 import InputNumber from "../input-number/InputNumber";
 import styles from "./AddItemModal.module.css"
 import InputSelect from "../input-select/InputSelect";
+import InputFile from "../input-file/InputFile";
 
 interface AddItemModalProps {
   closeModal: () => any;
@@ -120,16 +121,7 @@ const AddItemModal: FC<AddItemModalProps> = ({
     <div className={styles.background} onClick={clickOnBackgroundHandler}>
       <div className={styles.addItemModal} onClick={clickOnModalHandler}>
         <div className={styles.modalInput}>
-          <Button
-            size={Size.small}
-            label={Labels.UPLOAD_DESIGN}
-            isTransparent={false}
-            onClick={() => { }}
-            color={Colors.BROWN}
-            hoverColor={Colors.BROWN}
-            labelColor={Colors.BLACK}
-            hoverLabelColor={Colors.WHITE}
-          />
+          <InputFile/>
         </div>
         <hr />
         <div className={styles.modalInput}>

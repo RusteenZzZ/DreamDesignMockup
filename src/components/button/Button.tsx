@@ -13,6 +13,7 @@ interface ButtonProps {
   hoverColor: Colors,
   labelColor: Colors,
   hoverLabelColor: Colors,
+  children?: React.ReactNode,
 }
 
 const paddings: {
@@ -23,7 +24,7 @@ const paddings: {
   "large": "10px 20px 10px 20px",
 }
 
-const Button: FC<ButtonProps> = (props) => {
+const Button: FC<ButtonProps> = ({children, ...props}) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
   const handleMouseEnter = () => {
@@ -59,6 +60,7 @@ const Button: FC<ButtonProps> = (props) => {
       onMouseLeave={handleMouseLeave}
     >
       {props.label}
+      {children}
     </button>
   )
 }
