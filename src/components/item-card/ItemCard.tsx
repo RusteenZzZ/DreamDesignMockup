@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 
 import DeleteIcon from "../../assets/img/DeleteIcon.png";
 import LockIcon from "../../assets/img/LockIcon.png";
@@ -14,6 +14,13 @@ const ItemCard: FC<ItemCardsProps> = ({
   label,
   deleteItemCard
 }) => {
+  const [imagePath, setImagePath] = useState<string>("");
+
+  const chooseRandomImage = () => {
+    const randomValue = Math.floor(Math.random() * 1685) + 1;
+    setImagePath("./../ai/" + randomValue + ".png");
+  }
+
   return (
     <div className={styles.itemCard}>
       <div className={styles.buttons}>
@@ -27,7 +34,11 @@ const ItemCard: FC<ItemCardsProps> = ({
           <img width={18} src={RandomizeIcon} />
         </div>
       </div>
-      {label}
+      {
+        imagePath !== ""
+          ? <img src={imagePath} />
+          : <></>
+      }
     </div>
   )
 }

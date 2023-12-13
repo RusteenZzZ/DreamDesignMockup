@@ -27,7 +27,7 @@ def extract_features(img_path, model):
 def recommend_and_plot_similar_images(query_img_path, features_array, file_names_array, top_k=5):
 
   # Folder containing chair images
-  data_folder = 'content/img'
+  data_folder = 'img'
 
   model = tf.keras.models.load_model(os.path.join('', 'Model_DD'))
 
@@ -63,7 +63,7 @@ def recommend_and_plot_similar_images(query_img_path, features_array, file_names
     plt.show()
 
 # Example usage: Provide the path to the query image
-query_image_path = 'content/img/1157.jpg'  # Adjust the path
+query_image_path = 'img/1157.jpg'  # Adjust the path
 recommend_and_plot_similar_images(query_image_path, features_array, file_names_array)
 # # Display the recommended similar images
 # print(f"Recommended Similar Images for '{os.path.basename(query_image_path)}':")
