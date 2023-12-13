@@ -28,7 +28,10 @@ const Cards: FC = () => {
   if (shouldRegroup) {
     setItemCards(newItemCards);
     if (newItemCards.length >= 1)
-      setGroupNum(groupNum - 1);
+      if (groupNum === 0)
+        setGroupNum(newItemCards.length - 1);
+      else
+        setGroupNum(groupNum - 1);
     else
       setGroupNum(-1);
   }
