@@ -7,23 +7,13 @@ import Button from "../button/Button";
 import styles from "./InputFile.module.css"
 
 interface InputFileProps {
-  selectedImage: File | null,
   setSelectedImage: (arg: any) => any,
 }
 
-const InputFile: FC<InputFileProps> = ({ selectedImage, setSelectedImage }) => {
+const InputFile: FC<InputFileProps> = ({ setSelectedImage }) => {
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];
-    if (file)
-      console.log(file.name);
     setSelectedImage(file);
-  };
-
-  const handleUpload = () => {
-    if (selectedImage) {
-      const formData = new FormData();
-      formData.append('image', selectedImage);
-    }
   };
 
   return (
@@ -32,7 +22,7 @@ const InputFile: FC<InputFileProps> = ({ selectedImage, setSelectedImage }) => {
         size={Size.small}
         label={""}
         isTransparent={false}
-        onClick={handleUpload}
+        onClick={() => {}}
         color={Colors.BROWN}
         hoverColor={Colors.BROWN}
         labelColor={Colors.BLACK}

@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import axios from "axios";
 
 import CrossIcon from "../../assets/img/CrossIcon.png";
 import Button from "../button/Button";
@@ -7,13 +8,13 @@ import { Labels } from "../../const/labels";
 import { Colors } from "../../const/colors";
 import InputRadio from "../input-radio/InputRadio";
 import InputNumber from "../input-number/InputNumber";
-import styles from "./AddItemModal.module.css"
 import InputSelect from "../input-select/InputSelect";
 import InputFile from "../input-file/InputFile";
+import styles from "./AddItemModal.module.css"
 
 interface AddItemModalProps {
   closeModal: () => any;
-  addItemCard: () => any;
+  addItemCard: (path: string) => Promise<any>;
 }
 
 const optionsStyle1 = [
@@ -58,7 +59,7 @@ const optionsCategory2 = [
 const optionsCategory3 = [
   "Dining table",
   "Dining chair",
-  "Bar counter,"
+  "Bar counter",
 ]
 const optionsCategory4 = [
   "Writing desk",
@@ -118,11 +119,35 @@ const AddItemModal: FC<AddItemModalProps> = ({
     e.stopPropagation();
   }
 
+  const handleSearchSimilarImage = async () => {
+    if (selectedImage) {
+      const formData = new FormData();
+      formData.append('image', selectedImage);
+      console.log("1");
+      const response = await axios.post('http://localhost:5000/search-similar', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log("2");
+      const similarImages = response.data.split("\n")
+      const theMostSimilarImage = similarImages[similarImages.length - 6]
+      console.log(similarImages);
+      console.log(similarImages[similarImages.length - 6]);
+      console.log("../../ai/img/" + `${theMostSimilarImage}`);
+      const t = await import("../../ai/img/" + theMostSimilarImage.trim());
+      addItemCard(t.default);
+      closeModal();
+    } else {
+      console.log("No image uploaded!");
+    }
+  }
+
   return (
     <div className={styles.background} onClick={clickOnBackgroundHandler}>
       <div className={styles.addItemModal} onClick={clickOnModalHandler}>
         <div className={styles.modalInput}>
-          <InputFile selectedImage={selectedImage} setSelectedImage={setSelectedImage}/>
+          <InputFile setSelectedImage={setSelectedImage} />
         </div>
         <hr />
         <div className={styles.modalInput}>
@@ -291,10 +316,7 @@ const AddItemModal: FC<AddItemModalProps> = ({
                 size={Size.small}
                 label={Labels.APPLY}
                 isTransparent={false}
-                onClick={() => {
-                  addItemCard();
-                  closeModal();
-                }}
+                onClick={() => handleSearchSimilarImage()}
                 color={Colors.LIGHT_GREEN}
                 hoverColor={Colors.LIGHT_GREEN}
                 labelColor={Colors.WHITE}

@@ -35,10 +35,10 @@ const Cards: FC = () => {
     if (itemCards.length < MAX_NUM_OF_ITEM_CARDS)
       setOpen(true);
   }
-
-  const addItemCard = () => {
+  
+  const addItemCard = async (path: string) => {
     if (itemCards.length < MAX_NUM_OF_ITEM_CARDS) {
-      setItemCards([...itemCards, null]);
+      setItemCards([...itemCards, path]);
       setLocked([...locked, false]);
     }
   }
@@ -115,7 +115,7 @@ const Cards: FC = () => {
             ?
             <AddItemModal
               closeModal={() => setOpen(false)}
-              addItemCard={addItemCard}
+              addItemCard={(path: string) => addItemCard(path)}
             />
             : <></>
         }
