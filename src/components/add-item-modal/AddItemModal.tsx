@@ -14,7 +14,7 @@ import styles from "./AddItemModal.module.css"
 
 interface AddItemModalProps {
   closeModal: () => any;
-  addItemCard: (path: string) => Promise<any>;
+  addItemCards: (paths: Array<string>) => Promise<any>;
 }
 
 const optionsStyle1 = [
@@ -107,7 +107,7 @@ const optionsColours = [
 
 const AddItemModal: FC<AddItemModalProps> = ({
   closeModal,
-  addItemCard,
+  addItemCards,
 }) => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
 
@@ -131,12 +131,23 @@ const AddItemModal: FC<AddItemModalProps> = ({
       });
       console.log("2");
       const similarImages = response.data.split("\n")
-      const theMostSimilarImage = similarImages[similarImages.length - 6]
-      console.log(similarImages);
-      console.log(similarImages[similarImages.length - 6]);
-      console.log("../../ai/img/" + `${theMostSimilarImage}`);
-      const t = await import("../../ai/img/" + theMostSimilarImage.trim());
-      addItemCard(t.default);
+      const s1Image = similarImages[similarImages.length - 6]
+      const s2Image = similarImages[similarImages.length - 5]
+      const s3Image = similarImages[similarImages.length - 4]
+      const s4Image = similarImages[similarImages.length - 3]
+      const s5Image = similarImages[similarImages.length - 2]
+      const s1 = await import("../../ai/img/" + s1Image.trim());
+      const s2 = await import("../../ai/img/" + s2Image.trim());
+      const s3 = await import("../../ai/img/" + s3Image.trim());
+      const s4 = await import("../../ai/img/" + s4Image.trim());
+      const s5 = await import("../../ai/img/" + s5Image.trim());
+      const addedPaths = [];
+      addedPaths.push(s1.default);
+      addedPaths.push(s2.default);
+      addedPaths.push(s3.default);
+      addedPaths.push(s4.default);
+      addedPaths.push(s5.default);
+      addItemCards(addedPaths);
       closeModal();
     } else {
       console.log("No image uploaded!");

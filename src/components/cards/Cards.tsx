@@ -11,7 +11,7 @@ import { Colors } from "../../const/colors";
 import styles from "./Cards.module.css";
 
 const Cards: FC = () => {
-  const MAX_NUM_OF_ITEM_CARDS = 5;
+  const MAX_NUM_OF_ITEM_CARDS = 20;
 
   const [itemCards, setItemCards] = useState<Array<string | null>>([]);
   const [locked, setLocked] = useState<Array<boolean>>([]);
@@ -35,12 +35,20 @@ const Cards: FC = () => {
     if (itemCards.length < MAX_NUM_OF_ITEM_CARDS)
       setOpen(true);
   }
-  
-  const addItemCard = async (path: string) => {
-    if (itemCards.length < MAX_NUM_OF_ITEM_CARDS) {
-      setItemCards([...itemCards, path]);
-      setLocked([...locked, false]);
-    }
+
+  const addItemCards = async (paths: Array<string>) => {
+    const addedPathes: Array<string> = [];
+    const addedLocks: Array<boolean> = [];
+    paths.forEach(path => {
+      if (itemCards.length < MAX_NUM_OF_ITEM_CARDS) {
+        addedPathes.push(path);
+        addedLocks.push(false);
+        // setItemCards([...itemCards, path]);
+        // setLocked([...locked, false]);
+      }
+    })
+    setItemCards([...itemCards, ...addedPathes]);
+    setLocked([...locked, ...addedLocks]);
   }
 
   const deleteItemCard = (toBeDeletetId: number) => {
@@ -115,7 +123,7 @@ const Cards: FC = () => {
             ?
             <AddItemModal
               closeModal={() => setOpen(false)}
-              addItemCard={(path: string) => addItemCard(path)}
+              addItemCards={(paths: Array<string>) => addItemCards(paths)}
             />
             : <></>
         }
