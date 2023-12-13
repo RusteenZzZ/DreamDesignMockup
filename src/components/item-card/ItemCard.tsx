@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 
 import DeleteIcon from "../../assets/img/DeleteIcon.png";
 import LockIcon from "../../assets/img/LockIcon.png";
+import UnlockIcon from "../../assets/img/UnlockIcon.png";
 import RandomizeIcon from "../../assets/img/RandomizeIcon.png";
 import styles from "./ItemCard.module.css";
 
@@ -17,6 +18,15 @@ const ItemCard: FC<ItemCardsProps> = ({
   setPath,
 }) => {
   const [num, setNum] = useState<number>(0);
+  const [locked, setLocked] = useState<boolean>(false);
+
+  const handleLock = () => {
+    setLocked(true);
+  }
+
+  const handleUnlock = () => {
+    setLocked(false);
+  }
 
   const chooseRandomImage = () => {
     const randomValue = Math.floor(Math.random() * 1685) + 1;
@@ -42,9 +52,17 @@ const ItemCard: FC<ItemCardsProps> = ({
         <div className={`${styles.button} ${styles.deleteButton}`} onClick={deleteItemCard}>
           <img width={18} src={DeleteIcon} />
         </div>
-        <div className={`${styles.button} ${styles.lockButton}`}>
-          <img width={18} src={LockIcon} />
-        </div>
+        {
+          locked
+            ?
+            <div className={`${styles.button} ${styles.unlockButton}`} onClick={handleUnlock}>
+              <img width={18} src={UnlockIcon} />
+            </div>
+            :
+            <div className={`${styles.button} ${styles.lockButton}`} onClick={handleLock}>
+              <img width={18} src={LockIcon} />
+            </div>
+        }
         <div className={`${styles.button} ${styles.randomizeButton}`} onClick={chooseRandomImage}>
           <img width={18} src={RandomizeIcon} />
         </div>
