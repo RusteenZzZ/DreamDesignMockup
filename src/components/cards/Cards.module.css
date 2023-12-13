@@ -1,3 +1,15 @@
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 0 5% 0 5%;
+}
+
 .cards{
   background-color: #283618;
   margin-top: 20px;

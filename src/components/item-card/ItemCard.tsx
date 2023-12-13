@@ -10,25 +10,22 @@ interface ItemCardsProps {
   path: string | null;
   deleteItemCard: () => any;
   setPath: (path: string) => any,
+  isLocked: boolean,
+  triggerLock: () => any,
 }
 
 const ItemCard: FC<ItemCardsProps> = ({
   path,
   deleteItemCard,
   setPath,
+  isLocked,
+  triggerLock,
 }) => {
   const [num, setNum] = useState<number>(0);
-  const [locked, setLocked] = useState<boolean>(false);
-
-  const handleLock = () => {
-    setLocked(true);
-  }
-
-  const handleUnlock = () => {
-    setLocked(false);
-  }
 
   const chooseRandomImage = () => {
+    if (isLocked)
+      return;
     const randomValue = Math.floor(Math.random() * 1685) + 1;
     setNum(randomValue);
   }
@@ -53,13 +50,13 @@ const ItemCard: FC<ItemCardsProps> = ({
           <img width={18} src={DeleteIcon} />
         </div>
         {
-          locked
+          isLocked
             ?
-            <div className={`${styles.button} ${styles.unlockButton}`} onClick={handleUnlock}>
+            <div className={`${styles.button} ${styles.unlockButton}`} onClick={triggerLock}>
               <img width={18} src={UnlockIcon} />
             </div>
             :
-            <div className={`${styles.button} ${styles.lockButton}`} onClick={handleLock}>
+            <div className={`${styles.button} ${styles.lockButton}`} onClick={triggerLock}>
               <img width={18} src={LockIcon} />
             </div>
         }
