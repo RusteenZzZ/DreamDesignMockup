@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 import DeleteIcon from "../../assets/img/DeleteIcon.png";
 import LockIcon from "../../assets/img/LockIcon.png";
@@ -40,8 +40,9 @@ const ItemCard: FC<ItemCardsProps> = ({
     }
   };
 
-  if (num !== 0)
+  if (num !== 0) {
     loadImage();
+  }
 
   return (
     <div className={styles.itemCard}>
@@ -64,11 +65,13 @@ const ItemCard: FC<ItemCardsProps> = ({
           <img width={18} src={RandomizeIcon} />
         </div>
       </div>
-      {
-        path
-          ? <img width={200} src={path} />
-          : <></>
-      }
+      <div className={styles.imageContainer}>
+        {
+          path
+            ? <img width={300} src={path} />
+            : <></>
+        }
+      </div>
     </div>
   )
 }

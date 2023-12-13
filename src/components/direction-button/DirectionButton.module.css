@@ -1,0 +1,14 @@
+.directionButton {
+  height: 300px;
+  width: 50px;
+  background-color: #E4E4E4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.directionButton:hover {
+  background-color: #cdcdcd;
+}

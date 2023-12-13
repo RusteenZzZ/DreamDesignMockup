@@ -13,8 +13,16 @@
 .cards{
   background-color: #283618;
   margin-top: 20px;
-  padding-top: 20px;
+  padding: 20px 10px 0px 10px;
   padding-bottom: 20px;
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+}
+
+.centeredCards {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

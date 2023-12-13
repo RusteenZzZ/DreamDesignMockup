@@ -1,11 +1,12 @@
 .itemCardWelcome {
   background-color: white;
-  height: 400px;
-  width: 800px;
+  height: 300px;
+  width: 1200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .content {

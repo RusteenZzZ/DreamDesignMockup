@@ -146,7 +146,6 @@ const AddItemModal: FC<AddItemModalProps> = ({
       addedPaths.push(s2.default);
       addedPaths.push(s3.default);
       addedPaths.push(s4.default);
-      addedPaths.push(s5.default);
       addItemCards(addedPaths);
       closeModal();
     } else {
