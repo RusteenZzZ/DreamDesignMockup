@@ -6,16 +6,17 @@ import RandomizeIcon from "../../assets/img/RandomizeIcon.png";
 import styles from "./ItemCard.module.css";
 
 interface ItemCardsProps {
-  label: string;
+  path: string | null;
   deleteItemCard: () => any;
+  setPath: (path: string) => any,
 }
 
 const ItemCard: FC<ItemCardsProps> = ({
-  label,
-  deleteItemCard
+  path,
+  deleteItemCard,
+  setPath,
 }) => {
   const [num, setNum] = useState<number>(0);
-  const [image, setImage] = useState<string | null>(null);
 
   const chooseRandomImage = () => {
     const randomValue = Math.floor(Math.random() * 1685) + 1;
@@ -25,7 +26,8 @@ const ItemCard: FC<ItemCardsProps> = ({
   const loadImage = async () => {
     try {
       const dynamicImport = await import("./../../ai/img/" + num + ".jpg");
-      setImage(dynamicImport.default);
+      setPath(dynamicImport.default);
+      setNum(0);
     } catch (error) {
       console.error('Error loading image:', error);
     }
@@ -48,8 +50,8 @@ const ItemCard: FC<ItemCardsProps> = ({
         </div>
       </div>
       {
-        image
-          ? <img width={200} src={image} />
+        path
+          ? <img width={200} src={path} />
           : <></>
       }
     </div>

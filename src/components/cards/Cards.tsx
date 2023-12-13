@@ -9,7 +9,7 @@ import ItemCard from "../item-card/ItemCard";
 const Cards: FC = () => {
   const MAX_NUM_OF_ITEM_CARDS = 5;
 
-  const [itemCards, setItemCards] = useState<Array<string>>([]);
+  const [itemCards, setItemCards] = useState<Array<string | null>>([]);
   const [open, setOpen] = useState<boolean>(false);
 
   const handleOpenModal = () => {
@@ -19,7 +19,7 @@ const Cards: FC = () => {
 
   const addItemCard = () => {
     if (itemCards.length < MAX_NUM_OF_ITEM_CARDS)
-      setItemCards([...itemCards, "LOREM IPSUM ITEM"]);
+      setItemCards([...itemCards, null]);
   }
 
   const deleteItemCard = (toBeDeletetId: number) => {
@@ -28,12 +28,21 @@ const Cards: FC = () => {
     ]);
   }
 
+  const setImage = (path: string, id: number) => {
+    setItemCards(itemCards.map((itemCard, idd) => {
+      if (idd === id)
+        return path
+      else
+        return itemCard
+    }))
+  }
+
   return (
     <div className={styles.cards}>
       {
         itemCards.length < MAX_NUM_OF_ITEM_CARDS
           ?
-          <ItemCardAdder openModal={handleOpenModal}/>
+          <ItemCardAdder openModal={handleOpenModal} />
           :
           <></>
       }
@@ -46,15 +55,17 @@ const Cards: FC = () => {
             itemCards.map((itemCard, id) =>
               <ItemCard
                 key={id}
-                label={itemCard}
+                path={itemCard}
                 deleteItemCard={() => deleteItemCard(id)}
+                setPath={(path) => setImage(path, id)}
               />
             )
           )
       }
       {
         open
-          ? <AddItemModal
+          ?
+          <AddItemModal
             closeModal={() => setOpen(false)}
             addItemCard={addItemCard}
           />
