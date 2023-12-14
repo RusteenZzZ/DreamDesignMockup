@@ -10,7 +10,9 @@ import InputRadio from "../input-radio/InputRadio";
 import InputNumber from "../input-number/InputNumber";
 import InputSelect from "../input-select/InputSelect";
 import InputFile from "../input-file/InputFile";
+import { useLoading } from "../../hooks/useLoading";
 import styles from "./AddItemModal.module.css"
+import Loader from "../loader/Loader";
 
 interface AddItemModalProps {
   closeModal: () => any;
@@ -152,6 +154,8 @@ const AddItemModal: FC<AddItemModalProps> = ({
       console.log("No image uploaded!");
     }
   }
+
+  const {loading, isLoading, error} = useLoading(handleSearchSimilarImage);
 
   return (
     <div className={styles.background} onClick={clickOnBackgroundHandler}>
@@ -326,13 +330,21 @@ const AddItemModal: FC<AddItemModalProps> = ({
                 size={Size.small}
                 label={Labels.APPLY}
                 isTransparent={false}
-                onClick={() => handleSearchSimilarImage()}
+                onClick={() => {
+                  if (!isLoading)
+                    loading();
+                }}
                 color={Colors.LIGHT_GREEN}
                 hoverColor={Colors.LIGHT_GREEN}
                 labelColor={Colors.WHITE}
                 hoverLabelColor={Colors.BLACK}
               />
             </div>
+            {
+              isLoading
+                ? <Loader/>
+                : <></>
+            }
           </div>
         </div>
       </div>
