@@ -20,13 +20,17 @@ const Cards: FC = () => {
   const [open, setOpen] = useState<boolean>(false);
 
   let shouldRegroup = false
-  const newItemCards = itemCards.filter(group => {
-    if (group.length === 0)
+  let newCleanedLocked = [...locked];
+  const newItemCards = itemCards.filter((group, id) => {
+    if (group.length === 0) {
       shouldRegroup = true;
+      newCleanedLocked = newCleanedLocked.filter((_, idd) => id !== idd);
+    }
     return group.length !== 0;
   })
   if (shouldRegroup) {
     setItemCards(newItemCards);
+    setLocked(newCleanedLocked);
     if (newItemCards.length >= 1)
       if (groupNum === 0)
         setGroupNum(newItemCards.length - 1);
@@ -121,6 +125,9 @@ const Cards: FC = () => {
     else
       setGroupNum(groupNum + 1);
   }
+
+  console.log(groupNum);
+  console.log(itemCards);
 
   return (
     <div className={styles.main}>
